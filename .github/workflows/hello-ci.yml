@@ -1,0 +1,12 @@
+name: My First Automated Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  welcome-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Привет, Дима! Робот CI/CD успешно запустился и выполнил команду!"
