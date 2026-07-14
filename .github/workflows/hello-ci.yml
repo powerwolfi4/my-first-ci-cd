@@ -1,12 +1,17 @@
-name: My First Automated Pipeline
+name: Deploy Docker Compose Project
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  welcome-job:
-    runs-on: ubuntu-latest
+  deploy-to-server:
+    runs-on: self-hosted  # <--- Ключевая магия! Говорим запускать это НА ТВОЕМ сервере
     steps:
-      - name: Say Hello
-        run: echo "Привет, Дима! Робот CI/CD успешно запустился и выполнил команду!"
+      - name: Pull code from GitHub
+        uses: actions/checkout@v4  # Робот сам скачает свежий код из репозитория на сервер
+
+      - name: Restart Docker Compose
+        run: |
+        docker compose down
+        docker compose up -d
