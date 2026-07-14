@@ -1,6 +1,6 @@
- version: '3.8'
+version: '3.8'
 
- services:
+services:
   # Наш веб-сервер Nginx
    my-custom-web:
       image: nginx:latest
@@ -13,19 +13,19 @@
         - db  # Наш веб-сервер будет запускаться только ПОСЛЕ того, как поднимется база
 
   # Наша новая база данных PostgreSQL
- db:
-   image: postgres:15
-   container_name: my-postgres-db
-   restart: always
-   environment:
-     POSTGRES_USER: dmitriy
-     POSTGRES_PASSWORD: ${DB_PASSWORD}  # Пароль прилетит сюда из переменных окружения
-     POSTGRES_DB: my_cool_database
-   ports:
+db:
+  image: postgres:15
+  container_name: my-postgres-db
+  restart: always
+  environment:
+    POSTGRES_USER: dmitriy
+    POSTGRES_PASSWORD: ${DB_PASSWORD}  # Пароль прилетит сюда из переменных окружения
+    POSTGRES_DB: my_cool_database
+  ports:
      - "5432:5432"
-   volumes:
+  volumes:
      - pgdata:/var/lib/postgresql/data  # Магия сохранения данных!
 
 # Объявляем постоянный диск (volume) для базы данных
- volumes:
-   pgdata:
+volumes:
+  pgdata:
