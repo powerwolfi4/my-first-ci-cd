@@ -6,9 +6,9 @@ services:
     container_name: my-custom-web
     ports:
       - "8080:80"
-  volumes:
+    volumes:
       - ./html:/usr/share/nginx/html
-depends_on:
+    depends_on:
       - db
 
   db:
@@ -21,7 +21,7 @@ depends_on:
       POSTGRES_DB: my_cool_database
     ports:
       - "5432:5432"
-  volumes:
+    volumes:
       - pgdata:/var/lib/postgresql/data
 
 volumes:
