@@ -16,4 +16,4 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }} # Берем секрет из GitHub и прокидываем в систему
         run: |
           docker compose down
-          docker compose up -d
+          docker compose up -d --remove-orphans
