@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v4  # Робот сам скачает свежий код из репозитория на сервер
 
       - name: Restart Docker Compose
+        env:
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }} # Берем секрет из GitHub и прокидываем в систему
         run: |
           docker compose down
           docker compose up -d
